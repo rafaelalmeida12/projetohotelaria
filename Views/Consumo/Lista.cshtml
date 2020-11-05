@@ -1,0 +1,79 @@
+﻿@model IEnumerable<projetohotelaria.Models.Consumo>
+
+@{
+    ViewData["Title"] = "Index";
+    Double valorTotalGeral = 0;
+}
+
+<h1>Consumos da Reserva N° @ViewBag.CodReserva </h1>
+
+<p>
+    <a asp-action="Criar" asp-route-codReserva="@ViewBag.CodReserva">Consumir</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Produto.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Produto.Valor)
+            </th>
+            <th>
+                Total
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            valorTotalGeral += item.Valor;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Produto.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Produto.Valor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Valor)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="4" align=right>
+                <strong> Total</strong>
+            </td>
+            <td>
+
+            </td>
+            <td>
+                @valorTotalGeral
+            </td>
+        </tr>
+
+    </tbody>
+</table>

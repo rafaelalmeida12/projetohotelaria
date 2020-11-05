@@ -1,0 +1,61 @@
+﻿@model IList<projetohotelaria.Models.ViewModel.AcomodacaoReserva>;
+@using projetohotelaria.Models.Enum;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<button type="button" class="btn btn-success">Disponível</button>
+<button type="button" class="btn btn-warning">Reservado</button>
+
+
+<div class="row">
+@foreach (var item in Model)
+{
+        if (item.Reserva.TipoStatus == TipoStatus.Pre_Reserva)
+        {
+            <div class="col-sm-4">
+                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                    <div class="card-header"><a asp-action="Criar" asp-controller="Reserva" asp-route-id="@item.Acomodacao.Id">@item.Acomodacao.Descricao</a></div>
+                    <div class="card-body">
+                        <h5 class="card-title">Cod Reserva: @item.Reserva.Codigo</h5>
+                        <p class="card-text">Tipo: @item.Acomodacao.Tipo</p>
+                        <p class="card-text">Numero Quarto: @item.Acomodacao.Codigo</p>
+                        <p class="card-text">Data Entrada: @item.Reserva.EntradaPrevista</p>
+                        <p class="card-text">Data Saida: @item.Reserva.SaidaPrevista</p>
+                    </div>
+                </div>
+            </div>
+        }
+       else if (item.Reserva.TipoStatus == TipoStatus.Disponivel)
+        {
+             
+            <div class="col-sm-4">
+                <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+                    <div class="card-header"><a asp-action="Criar" asp-controller="Reserva" asp-route-id="@item.Acomodacao.Id">@item.Acomodacao.Descricao</a></div>
+                    <div class="card-body">
+                        <h5 class="card-title">Cod Reserva: @item.Reserva.Codigo</h5>
+                        <p class="card-text">Tipo: @item.Acomodacao.Tipo</p>
+                        <p class="card-text">Numero Quarto: @item.Acomodacao.Codigo</p>
+                        <p class="card-text">Data Entrada: @item.Reserva.EntradaPrevista</p>
+                        <p class="card-text">Data Saida: @item.Reserva.SaidaPrevista</p>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-sm-4">
+                <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                    <div class="card-header"><a asp-action="Edit" asp-controller="Reserva" asp-route-id="@item.Reserva.Id">@item.Acomodacao.Descricao</a></div>
+                    <div class="card-body">
+                        <h5 class="card-title">Cod Reserva: </h5>
+                        <p class="card-text">Tipo: @item.Acomodacao.Tipo</p>
+                        <p class="card-text">Tipo: @item.Acomodacao.Codigo</p>
+                        <p class="card-text">Data Entrada: </p>
+                        <p class="card-text">Data Saida: </p>
+                    </div>
+                </div>
+            </div>
+        }
+}
+ </div>

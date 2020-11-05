@@ -1,0 +1,62 @@
+﻿@model IEnumerable<projetohotelaria.Models.Reserva>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Situação
+            </th>
+            <th>
+                Hospede
+            </th>
+            <th>
+                Acomodação
+            </th>
+
+            <th>
+                Data Confirmação
+            </th>
+            <th>
+                Entrada Prevista
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hospede.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Acomodacao.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataConfirmacao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EntradaPrevista)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<projetohotelaria.Models.Reserva>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Cadastrar Produtos da Reserva</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th> Códgio da Reserva</th>
+            <th> Hóspede</th>
+            <th>Acomodação</th>
+            <th>Valor</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hospede.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Acomodacao.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SomaTotal)
+                </td>
+                <td>
+                    <a asp-controller="Consumo" asp-action="Criar" asp-route-id="@item.Id"
+    asp-route-codReserva="@item.Codigo">Consumir</a> |
+                    <a asp-controller="Consumo" asp-action="Lista" asp-route-CodReserva="@item.Codigo">Visualizar</a>
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

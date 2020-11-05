@@ -1,0 +1,5 @@
+{
+    "acomodacao": " verificar onde coloca o valor da diária",
+    "reserva": " validar se o numero de hospede e maior que a capacidade do quarto",
+    "reserva1": " validar se data de entrada e menor que hoje"
+}

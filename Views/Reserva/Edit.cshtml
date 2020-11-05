@@ -1,0 +1,76 @@
+﻿@model projetohotelaria.Models.Reserva
+
+    @{
+    ViewData["Title"] = "Edit";
+    }
+
+    <h1>Editar Reserva</h1>
+
+    <hr />
+    <div class="row">
+    <div class="col-md-4">
+
+    <form asp-action="Edit">
+       <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="HospedeId" class="control-label"></label>
+              <select asp-for="HospedeId"
+              asp-items="@(new SelectList (ViewBag.Hospede,"Id","Nome"))"></select>
+                <span asp-validation-for="HospedeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AcomodacaoId" class="control-label"></label>
+                <select asp-for="AcomodacaoId"
+              asp-items="@(new SelectList (ViewBag.Acomodacao,"Id","Descricao"))"></select>
+                <span asp-validation-for="AcomodacaoId" class="text-danger"></span>
+            </div>
+              <div class="form-group">
+                <label asp-for="QuantidadeHospede" class="control-label"></label>
+                <input asp-for="QuantidadeHospede" class="form-control" />
+                <span asp-validation-for="QuantidadeHospede" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EntradaPrevista" class="control-label"></label>
+                <input asp-for="EntradaPrevista" class="form-control" />
+                <span asp-validation-for="EntradaPrevista" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SaidaPrevista" class="control-label"></label>
+                <input asp-for="SaidaPrevista" class="form-control" />
+                <span asp-validation-for="SaidaPrevista" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="ValorReserva" class="control-label"></label>
+               <input asp-for="ValorReserva" class="form-control" />
+                <span asp-validation-for="ValorReserva" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="Antecipacao" class="control-label"></label>
+               <input asp-for="Antecipacao" class="form-control" />
+                <span asp-validation-for="Antecipacao" class="text-danger"></span>
+            </div>
+               <div class="form-group">
+                <label asp-for="DataConfirmacao" class="control-label"></label>
+               <input asp-for="DataConfirmacao" class="form-control" />
+                <span asp-validation-for="DataConfirmacao" class="text-danger"></span>
+            </div>
+             <input type="hidden" asp-for="Codigo" />
+            @* <div class="form-group">
+                <label asp-for="Antecipacao" class="control-label"></label>
+               <input asp-for="Antecipacao" class="form-control" />
+                <span asp-validation-for="Antecipacao" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+    </form>
+    </div>
+    </div>
+
+    <div>
+    <a asp-action="Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
