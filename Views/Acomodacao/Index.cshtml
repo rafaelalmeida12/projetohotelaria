@@ -1,0 +1,60 @@
+﻿@model IEnumerable<projetohotelaria.Models.Acomodacao>
+@using projetohotelaria.Models.Enum;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorDiaria)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorDiaria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoStatusAcomodacao)
+                </td>
+                @if (item.TipoStatusAcomodacao.Equals(TipoStatusAcomodacao.Disponivel))
+                {
+                    <td>
+                        <a asp-controller="Reserva" asp-action="Criar" asp-route-id="@item.Id">Adicionar</a> |
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a asp-controller="Reserva" asp-action="Edit" asp-route-id="@item.Id">Visualizar</a> |
+                    </td>
+                }
+
+            </tr>
+        }
+    </tbody>
+</table>

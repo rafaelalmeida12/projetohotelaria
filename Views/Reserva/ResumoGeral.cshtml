@@ -1,0 +1,43 @@
+﻿@model projetohotelaria.Models.Reserva
+
+@{
+    ViewData["Title"] = "Resumo";
+}
+
+<h1>Resumo Da Reserva</h1>
+
+<div class="alert alert-success" role="alert">
+    Reservar Cadastrada Com sucesso : @Model.Codigo
+</div>
+<hr />
+
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Hospede.Nome)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Hospede.Nome)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Hospede.Cpf)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Hospede.Cpf)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.EntradaPrevista)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.EntradaPrevista)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.SaidaPrevista)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.SaidaPrevista)
+    </dd>
+</dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
